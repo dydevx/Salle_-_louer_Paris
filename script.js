@@ -123,6 +123,16 @@ backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+document.querySelectorAll("video").forEach((video) => {
+  video.addEventListener("play", () => {
+    document.querySelectorAll("video").forEach((otherVideo) => {
+      if (otherVideo !== video) {
+        otherVideo.pause();
+      }
+    });
+  });
+});
+
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
